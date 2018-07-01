@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="category">Fact category:</label>
+    <select [(ngModel)]="fact.category" id="category" name="category">
+      <option *ngFor="let c of categories" [ngValue]="c" (change)="print()">{{c.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="content">Content:</label>
+    <textarea class="form-control" id="content" [(ngModel)]="fact.content" name="content"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <!--<button class="btn btn-warning" (click)="print()">Print</button>-->
+</form>

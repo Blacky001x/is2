@@ -1,0 +1,25 @@
+<div id="register-div">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="user.name" name="name"
+             placeholder="Enter your name..">
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="user.lastName" name="lastName"
+             placeholder="Your last name..">
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="user.email" name="email"
+             placeholder="Your email address..">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" [(ngModel)]="user.password" name="password"
+             placeholder="Password (don't forget this one)..">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
