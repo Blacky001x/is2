@@ -34,9 +34,13 @@ public class FactServiceImpl implements FactService {
 
     @Override
     public Fact getRandom() {
-        int size = (int) factRepository.count();
+        List<Fact> facts = factRepository.findByIsAllowedTrue();
+        int size = facts.size();
+        if (size == 0) {
+            return null;
+        }
         Random r = new Random();
-        return factRepository.findById(r.nextInt(size)).orElse(null);
+        return facts.get(r.nextInt(size));
     }
 
     @Override
@@ -55,5 +59,14 @@ public class FactServiceImpl implements FactService {
     @Override
     public List<Fact> getAllUnapproved() {
         return factRepository.findAllUnapproved();
+    }
+
+    @Override
+    public void updateUnapproved(List<Fact> facts) {
+        for (Fact fact : facts) {
+            Fact f = factRepository.getOne(fact.getId());
+            f.setAllowed(fact.isAllowed());
+            factRepository.save(f);
+        }
     }
 }

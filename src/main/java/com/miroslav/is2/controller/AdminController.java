@@ -6,9 +6,7 @@ import com.miroslav.is2.service.FactService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,12 +21,22 @@ public class AdminController {
     }
 
     @GetMapping("/facts/unapproved")
-    public ResponseEntity<List<Fact>> getAllCategories() {
+    public ResponseEntity<List<Fact>> getAllUnapproved() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Content-Type", "application/json; charset=UTF-8");
 
         List<Fact> facts = factService.getAllUnapproved();
 
         return new ResponseEntity<>(facts, headers, HttpStatus.OK);
+    }
+
+    @PostMapping("/facts/unapproved")
+    public ResponseEntity<?> updateUnapproved(@RequestBody List<Fact> facts) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json; charset=UTF-8");
+
+        factService.updateUnapproved(facts);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

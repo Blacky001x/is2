@@ -1,5 +1,6 @@
 package com.miroslav.is2.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -14,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
 
     @Column(name = "email", unique = true, nullable = true)
@@ -101,4 +102,5 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+
 }

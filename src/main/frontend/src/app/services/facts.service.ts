@@ -11,6 +11,7 @@ export class FactsService {
   private getAllCategoriesUrl = this.baseUrl + '/facts/categories';
   private postNewFactUrl = this.baseUrl + '/facts/';
   private getAllUnapprovedUrl = this.baseUrl + '/admin/facts/unapproved';
+  private postUnapprovedChangesUrl = this.baseUrl + '/admin/facts/unapproved';
 
   constructor(private _http: HttpClient) { }
 
@@ -29,5 +30,10 @@ export class FactsService {
 
   getAllUnapprovedFacts() {
     return this._http.get<Fact[]>(this.getAllUnapprovedUrl, {withCredentials: true});
+  }
+
+  postUpdateFacts(facts: Fact[]) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this._http.post<Fact>(this.postUnapprovedChangesUrl, facts, {headers,  withCredentials:true });
   }
 }

@@ -8,6 +8,7 @@ export class StupidService {
   url1 = 'http://localhost:8080/nece';
   url2 = 'http://localhost:8080/lool';
   url3 = 'http://localhost:8080/hgfkl';
+  url4 = 'http://localhost:8080/test';
 
   constructor(private _http: HttpClient) { }
 
@@ -43,5 +44,10 @@ export class StupidService {
 
 
     return this._http.get(this.url3, { withCredentials:true });
+  }
+
+  m4() {
+    console.log('ok, testing service');
+    return this._http.get(this.url4, { withCredentials: true });
   }
 }

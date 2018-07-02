@@ -18,6 +18,7 @@ import {FactsService} from "./services/facts.service";
 import { AddFactComponent } from './components/facts/add-fact/add-fact.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ApprovalsComponent } from './components/admin/approvals/approvals.component';
+import {RatingService} from "./services/rating.service";
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ApprovalsComponent } from './components/admin/approvals/approvals.compo
     UserService,
     FactsService,
     StupidService,
+    RatingService
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,

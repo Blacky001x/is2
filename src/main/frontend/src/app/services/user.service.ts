@@ -7,7 +7,7 @@ import 'rxjs/add/operator/catch'
 import 'rxjs/add/observable/throw'
 
 import * as $ from 'jquery';
-import {User} from "../model/user";
+import {User} from "../model/user.model";
 
 @Injectable()
 export class UserService {

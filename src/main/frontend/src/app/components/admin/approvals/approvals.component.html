@@ -1,9 +1,16 @@
 <div class="container">
   <h2>Unapproved Facts</h2>
   <p>Select ones you would like to approve:</p>
-  <form>
-    <div class="checkbox" *ngFor="let fact of unapprovedFacts">
-      <label><input type="text" [(ngModel)]="fact.isAllowed">{{fact.content}}</label>
+    <!--<div class="checkbox" *ngFor="let fact of unapprovedFacts">-->
+      <!--<label><input type="checkbox" [(ngModel)]="fact.isAllowed">{{fact.content}}</label>-->
+    <!--</div>-->
+    <div *ngFor="let fact of unapprovedFacts" class="border border-primary">
+      <label>
+        <input type="checkbox" name="isActive" [(ngModel)]="fact.allowed">
+        {{fact.content}}
+      </label>
     </div>
-  </form>
+
+  <button class="btn btn-primary" (click)="onSubmit()">Save updates</button>
+
 </div>

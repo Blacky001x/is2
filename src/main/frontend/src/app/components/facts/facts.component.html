@@ -3,11 +3,43 @@
 
     <p>{{fact.content}}</p>
 
+    <div class="row my-row2">
+      <button *ngIf="isAuthenticated()" class="btn btn-success btn-lg" (click)="submitNew()">Add Your Fact</button>
+      <button class="btn btn-primary btn-lg" (click)="next()">Next</button>
+    </div>
+
   </div>
 
-  <div class="row">
-    <button class="btn btn-primary" (click)="next()">Next</button>
-    <button *ngIf="isAuthenticated()" class="btn btn-success" (click)="submitNew()">Add Your Fact</button>
-  </div>
+
+  <form class="my-row" (ngSubmit)="processRating()" *ngIf="isAuthenticated()">
+    How did you like this fact?
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+      <label class="btn btn-secondary" (click)="setRating(0)">
+        <input type="radio" name="rate" > 0
+      </label>
+      <label class="btn btn-secondary" (click)="setRating(1)">
+        <input type="radio" name="rate" > 1
+      </label>
+      <label class="btn btn-secondary" (click)="setRating(2)">
+        <input type="radio" name="rate"> 2
+      </label>
+      <label class="btn btn-secondary" (click)="setRating(3)">
+        <input type="radio" name="rate"> 3
+      </label>
+      <label class="btn btn-secondary" (click)="setRating(4)">
+        <input type="radio" name="rate"> 4
+      </label>
+      <label class="btn btn-secondary" (click)="setRating(5)">
+        <input type="radio" name="rate"> 5
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+
+
+  <!--<div class="row my-row my-row2">-->
+    <!--<button class="btn btn-primary btn-lg" (click)="next()">Next</button>-->
+    <!--<button *ngIf="isAuthenticated()" class="btn btn-success btn-lg" (click)="submitNew()">Add Your Fact</button>-->
+  <!--</div>-->
 
 </div>

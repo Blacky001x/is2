@@ -21,4 +21,6 @@ public interface FactService {
     Fact save(Fact fact);
 
     List<Fact> getAllUnapproved();
+
+    void updateUnapproved(List<Fact> facts);
 }

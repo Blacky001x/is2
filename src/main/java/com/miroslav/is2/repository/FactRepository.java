@@ -9,9 +9,11 @@ import java.util.List;
 
 public interface FactRepository extends JpaRepository<Fact, Integer> {
 
-    @Query("SELECT f FROM Fact f WHERE f.category=:id")
+    @Query("SELECT f FROM Fact f WHERE f.category=:id AND f.isAllowed=true")
     List<Fact> findByCategory(@Param("id") int id);
 
     @Query("SELECT f FROM Fact f WHERE f.isAllowed=false")
     List<Fact> findAllUnapproved();
+
+    List<Fact> findByIsAllowedTrue();
 }

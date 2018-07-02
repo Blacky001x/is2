@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
 
 @Entity
 @Table(name = "fact")
@@ -11,7 +12,7 @@ public class Fact {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "fact_id", unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     private int id;
 
 
@@ -31,7 +32,6 @@ public class Fact {
     @ManyToOne(optional = true)
     @JoinColumn(name = "user_id", nullable = true)
     private User createdBy;
-
 
     public int getId() {
         return id;

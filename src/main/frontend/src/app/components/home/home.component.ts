@@ -29,4 +29,8 @@ export class HomeComponent implements OnInit {
     this.stupidService.m3().subscribe();
   }
 
+  test() {
+    this.stupidService.m4().subscribe();
+  }
+
 }

@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.Principal;
 
 @RestController
 public class HomeController {
@@ -58,6 +60,12 @@ public class HomeController {
 
         saved = userService.saveUser(user);
         return new ResponseEntity<>(saved, headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<Temp> test(Principal principal) {
+        System.out.println(principal.getName());
+        return new ResponseEntity<>( new Temp ( principal.getName()), HttpStatus.OK);
     }
 
 }
